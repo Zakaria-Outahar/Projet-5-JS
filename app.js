@@ -44,6 +44,7 @@ function afficherListe(todo){
     // btn.appendChild(img);
 
     liste.appendChild(item);
+    setTimeout(() => item.style.opacity = "1", 10);
     toutesLesTaches.push(item);
 }
 
@@ -54,7 +55,8 @@ function tacheFaite(e){
 function supprimerTache(e){
     toutesLesTaches.forEach(el => {
         if(e.target.parentNode.getAttribute('data-key') === el.getAttribute('data-key')){
-            el.remove();
+            el.style.opacity = 0;
+            setTimeout(() => el.remove(),500)
             toutesLesTaches.filter(li => {
                 return li.dataset.key !== el.dataset.key;
             })
